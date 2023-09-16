@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('fon.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.authentication {
+    background-color: rgba(160, 160, 160, 0.9); /* Цвет фона формы с прозрачностью */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.authentication h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333; /* Цвет заголовка */
+}
+
+.authentication label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333; /* Цвет текста метки */
+}
+
+.authentication label.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #333; /* Цвет текста метки */
+}
+
+.authentication input[type="text"],
+.authentication input[type="password"],
+.authentication input[type="checkbox"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; /* Цвет рамки поля ввода */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.authentication input[type="submit"] {
+    background-color: #060606; /* Цвет фона кнопки "Войти" */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.authentication input[type="submit"]:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}
+
+.authentication label.remember-me input[type="checkbox"] {
+    margin-left: -100px; /* Сдвигаем галочку вправо */
+}
+
+.back-button {
+    background-color: #060606;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+    margin-left: -200px; /* Сдвигаем галочку вправо */
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
