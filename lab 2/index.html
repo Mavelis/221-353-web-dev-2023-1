@@ -19,13 +19,14 @@
                 <li><a href="services.html">Услуги</a></li>
                 <li><a href="contact.html">Контакты</a></li>
                 <li><a href="authentication.html">Вход</a></li>
+                <li><a href="registration.html">Регистрация</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <h1 class="animate__animated animate__bounceInDown">Добро пожаловать на нашу домашнюю страницу</h1>
-    <div class="image-container animate__animated animate__fadeIn">
+        <div class="image-container animate__animated animate__fadeIn">
             <img src="logo1.png" alt="логотип">
     </div>
         
@@ -51,5 +52,13 @@
         <p>@mavelisporducer</p>
         <p>&copy; 2023</p>
     </footer>
+    <script>
+        // Проверяем, есть ли параметр "login" в URL и он равен "success"
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('login') === 'success') {
+            const notification = document.getElementById('notification');
+            notification.innerText = 'Вы успешно вошли в систему.';
+        }
+    </script>
 </body>
 </html>

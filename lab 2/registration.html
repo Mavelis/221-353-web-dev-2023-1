@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registration.css"> 
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="registration">
+        <a href="authentication.html" class="back-button">Вход</a>
+        <form action="register.php" method="POST">
+            <h1>Регистрация</h1>
+
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br>
+
+
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+</body>
+</html>
