@@ -1,0 +1,247 @@
+/* Основные стили сайта */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.featured-recipes {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.featured-recipes h2 {
+    color: #333;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #444;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    max-width: 200px;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* Стили для рецептов */
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.recipe {
+    width: calc(50% - 20px); /* Распределяем по два рецепта на одной линии с небольшим расстоянием между ними */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.recipe img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.recipe h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.recipe-description {
+    color: #555;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar .menu-list li {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.sidebar .menu-list a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.sidebar .menu-list a:hover {
+    color: #FF5722; /* Цвет при наведении курсора */
+}
+
+/* CSS для популярных рецептов */
+.sidebar .popular-recipes li {
+    margin: 10px 0;
+    padding: 0;
+}
+
+
+/* CSS для описания "О нас" */
+.sidebar p {
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ffffff;
+}
+
+
+.sidebar .menu-list a,
+.sidebar .popular-recipes a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease; /* Добавляем анимацию для цвета и трансформации */
+}
+
+.sidebar .menu-list a:hover,
+.sidebar .popular-recipes a:hover {
+    color: #FF5722; /* Цвет при наведении курсора */
+    transform: scale(1.05); /* Масштабирование элемента при наведении */
+    transition: color 0.3s ease, transform 0.2s ease; /* Анимация для цвета и трансформации при наведении */
+}
+
+/* Анимация при наведении курсора на ссылку "Узнайте больше" */
+.sidebar a.more-info {
+    text-decoration: none;
+    color: #FF5722; /* Цвет ссылки */
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease; /* Анимация для цвета и трансформации */
+}
+
+.sidebar a.more-info:hover {
+    color: #FF8A65; /* Цвет при наведении курсора */
+    transform: scale(1.05); /* Масштабирование элемента при наведении */
+    transition: color 0.3s ease, transform 0.2s ease; /* Анимация для цвета и трансформации при наведении */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row; /* Выравнивание сайдбара и секции горизонтально */
+}
+
+.sidebar {
+    margin-right: 20px; /* Устанавливаем отступ справа для сайдбара */
+}
+
+.about {
+    flex-grow: 1; /* Расширяем секцию "О нас" для занятия всего доступного места */
+}
+
+@media (max-width: 768px) {
+    /* Adjust header styles for mobile */
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    /* Add a mobile navigation menu */
+    nav.mobile-nav {
+        display: block;
+    }
+
+    nav.mobile-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    nav.mobile-nav li {
+        margin-bottom: 10px;
+    }
+
+    nav.mobile-nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    /* Adjust main content and sidebar for mobile */
+    .main-content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .featured-recipes {
+        width: 100%;
+    }
+
+    .sidebar {
+        max-width: 100%;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+    }
+
+    /* Adjust recipe cards for mobile */
+    .recipe {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
