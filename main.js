@@ -100,9 +100,7 @@ function downloadData(page = 1, searchQuery = '') {
     let perPage = document.querySelector('.per-page-btn').value;
     url.searchParams.append('page', page);
     url.searchParams.append('per-page', perPage);
-    
-    // Добавляем параметр q для поиска
-    url.searchParams.append('q', searchQuery);
+    url.searchParams.append('q', searchQuery); // Add the search query parameter
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
@@ -126,15 +124,62 @@ function pageBtnHandler(event) {
     }
 }
 
+function searchBtnHandler(event) {
+    let searchField = document.querySelector('.search-field');
+    downloadData(1, searchField.value);
+}
+
+function autocompleteHandler(event) {
+    let searchField = event.target;
+    let autocompleteContainer = document.querySelector('.autocomplete-container');
+
+    autocompleteContainer.innerHTML = '';
+
+    let searchQuery = searchField.value.trim();
+
+    if (searchQuery !== '') {
+        fetchAutocompleteSuggestions(searchQuery)
+            .then((suggestions) => {
+                displayAutocompleteSuggestions(suggestions);
+            })
+            .catch((error) => {
+                console.error('Autocomplete request error:', error);
+            });
+    }
+}
+
+function fetchAutocompleteSuggestions(searchQuery) {
+    let autocompleteUrl = `http://cat-facts-api.std-900.ist.mospolytech.ru/autocomplete?q=${searchQuery}`;
+
+    return fetch(autocompleteUrl)
+        .then((response) => response.json())
+        .then((data) => data.suggestions || []);
+}
+
+function displayAutocompleteSuggestions(suggestions) {
+    let autocompleteContainer = document.querySelector('.autocomplete-container');
+
+    let autocompleteList = document.createElement('ul');
+    autocompleteList.classList.add('autocomplete-list');
+
+    suggestions.forEach((suggestion) => {
+        let suggestionItem = document.createElement('li');
+        suggestionItem.textContent = suggestion;
+        suggestionItem.addEventListener('click', () => {
+            document.querySelector('.search-field').value = suggestion;
+            autocompleteContainer.innerHTML = '';
+        });
+
+        autocompleteList.appendChild(suggestionItem);
+    });
+
+    autocompleteContainer.appendChild(autocompleteList);
+}
+
 window.onload = function () {
     downloadData();
     document.querySelector('.pagination').onclick = pageBtnHandler;
     document.querySelector('.per-page-btn').onchange = perPageBtnHandler;
-
-    // Добавляем обработчик события для кнопки поиска
-    document.querySelector('.search-btn').onclick = function () {
-        let searchQuery = document.querySelector('.search-field').value;
-        downloadData(1, searchQuery);
-        window.scrollTo(0, 0);
-    };
+    document.querySelector('.search-btn').onclick = searchBtnHandler;
+    document.querySelector('.search-field').addEventListener('input', autocompleteHandler);
 };
