@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats facts</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="header">
@@ -16,14 +14,11 @@
         </nav>
     </header>
     <main>
-        
-
+        <div class="container">
             <div class="search-form">
-                <input type="text" class="search-field" oninput="handleAutocomplete()">
-                <button class="search-btn" onclick="searchRecords()">Найти</button>
-                <div class="autocomplete-list"></div>
+                <input type="text" class="search-field">
+                <button class="search-btn">Найти</button>
             </div>
-
             <div class="pagination-info">
                 <span>
                     Показывать по
