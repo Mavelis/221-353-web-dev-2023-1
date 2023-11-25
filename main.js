@@ -94,13 +94,16 @@ function renderPaginationElement(info) {
     paginationContainer.append(btn);
 }
 
-function downloadData(page = 1, query = '') {
+function downloadData(page = 1, searchQuery = '') {
     let factsList = document.querySelector('.facts-list');
-    let url = new URL(factsList.dataset.url.replace('http:', 'https:'));  // Use HTTPS
+    let url = new URL(factsList.dataset.url);
     let perPage = document.querySelector('.per-page-btn').value;
-    url.searchParams.append('q', query);
     url.searchParams.append('page', page);
     url.searchParams.append('per-page', perPage);
+    
+    // Добавляем параметр q для поиска
+    url.searchParams.append('q', searchQuery);
+
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.responseType = 'json';
@@ -125,68 +128,13 @@ function pageBtnHandler(event) {
 
 window.onload = function () {
     downloadData();
-    document.querySelector('.search-btn').onclick = searchRecords;
     document.querySelector('.pagination').onclick = pageBtnHandler;
     document.querySelector('.per-page-btn').onchange = perPageBtnHandler;
-    document.querySelector('.search-field').oninput = handleAutocomplete;
+
+    // Добавляем обработчик события для кнопки поиска
+    document.querySelector('.search-btn').onclick = function () {
+        let searchQuery = document.querySelector('.search-field').value;
+        downloadData(1, searchQuery);
+        window.scrollTo(0, 0);
+    };
 };
-
-function searchRecords() {
-    let searchField = document.querySelector('.search-field');
-    let query = searchField.value.trim();
-    downloadData(1, query);
-}
-
-function handleAutocomplete() {
-    let searchField = document.querySelector('.search-field');
-    let query = searchField.value.trim();
-
-    if (query !== '') {
-        let autocompleteList = document.querySelector('.autocomplete-list');
-        let autocompleteUrl = 'http://cat-facts-api.std-900.ist.mospolytech.ru/autocomplete?q=' + query;
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', autocompleteUrl);
-        xhr.responseType = 'json';
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                renderAutocomplete(xhr.response);
-            } else {
-                console.error('Error fetching autocomplete data:', xhr.statusText);
-            }
-        };
-        xhr.onerror = function () {
-            console.error('Network error while fetching autocomplete data.');
-        };
-        xhr.send();
-    } else {
-        clearAutocomplete();
-    }
-}
-
-function renderAutocomplete(data) {
-    let autocompleteList = document.querySelector('.autocomplete-list');
-    autocompleteList.innerHTML = '';
-
-    for (let suggestion of data) {
-        let suggestionItem = document.createElement('div');
-        suggestionItem.classList.add('autocomplete-item');
-        suggestionItem.innerText = suggestion;
-        suggestionItem.onclick = function () {
-            selectAutocompleteSuggestion(suggestion);
-        };
-
-        autocompleteList.appendChild(suggestionItem);
-    }
-}
-
-function selectAutocompleteSuggestion(suggestion) {
-    let searchField = document.querySelector('.search-field');
-    searchField.value = suggestion;
-    clearAutocomplete();
-}
-
-function clearAutocomplete() {
-    let autocompleteList = document.querySelector('.autocomplete-list');
-    autocompleteList.innerHTML = '';
-}
