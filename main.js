@@ -96,7 +96,7 @@ function renderPaginationElement(info) {
 
 function downloadData(page = 1, query = '') {
     let factsList = document.querySelector('.facts-list');
-    let url = new URL(factsList.dataset.url);
+    let url = new URL(factsList.dataset.url.replace('http:', 'https:'));  // Use HTTPS
     let perPage = document.querySelector('.per-page-btn').value;
     url.searchParams.append('q', query);
     url.searchParams.append('page', page);
