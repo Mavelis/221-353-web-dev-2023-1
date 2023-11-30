@@ -1,0 +1,45 @@
+body {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+nav {
+  background-color: #28a745;
+}
+
+nav a {
+  color: white !important;
+}
+
+section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+h1, h2 {
+  color: #343a40;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
